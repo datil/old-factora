@@ -1,0 +1,71 @@
+[:factura {:xmlns:ds "http://www.w3.org/2000/09/xmldsig#"
+           :xmlns:xsi "http://www.w3.org/2001/XMLSchema-instance"
+           :xsi:noNamespaceSchemaLocation "/home/Users/eraad/Projects/comprobantes/resources/factura_v1.0.0.xsd"
+           :id "comprobante"
+           :version "Text"}
+ [:infoTributaria {}
+  [:ambiente {} "1"]
+  [:tipoEmision {} "1"]
+  [:razonSocial {} "Datilmedia S.A."]
+  [:nombreComercial {} "Datil"]
+  [:ruc {} "0914617584001"]
+  [:claveAcceso {} "0000000000000000000000000000000000000000000000000"]
+  [:codDoc {} "00"]
+  [:estab {} "000"]
+  [:ptoEmi {} "000"]
+  [:secuencial "000000000"]
+  [:dirMatriz {} "V.E. Estrada 112"]]
+ [:infoFactura {}
+  [:fechaEmision {} "01/01/2014"]
+  [:dirEstablecimiento {} "V.E. Estrada 112"]
+  [:contribuyenteEspecial {} "123"]
+  [:obligadoContabilidad {} "SI"]
+  [:tipoIdentificacionComprador {} "04"]
+  [:guiaRemision {} "000-000-000000000"]
+  [:razonSocialComprador {} "Eduardo Raad"]
+  [:identificacionComprador {} "0914617584"]
+  [:totalSinImpuestos {} "1.00"]
+  [:totalDescuento {} "3.14"]
+  [:totalConImpuestos {}
+   [:totalImpuesto {}
+    [:codigo {} "0"]
+    [:codigoPorcentaje {} "0"]
+    [:descuentoAdicional {} "0"]
+    [:baseImponible {} "0"]
+    [:tarifa {} "0"]
+    [:valor {} "0"]]]
+  [:propina {} "0"]
+  [:importeTotal {} "0"]
+  [:moneda {} "USD"]]
+ [:detalles {}
+  [:detalle {}
+   [:codigoPrincipal {} "XX"]
+   [:codigoAuxiliar {} "XX"]
+   [:descripcion {} "XX"]
+   [:cantidad {} "1"]
+   [:precioUnitario "1.00"]
+   [:descuento {} "0"]
+   [:precioTotalSinImpuesto {} "0"]
+   [:detallesAdicionales {}
+    [:detAdicional {:nombre "D" :valor "X"}]]
+   [:impuestos {}
+    [:impuesto {}
+     [:codigo {} "0"]
+     [:codigoPorcentaje {} "0"]
+     [:tarifa {} "0"]
+     [:baseImponible {} "0"]
+     [:valor {} "0"]]
+    [:impuesto {}
+     [:codigo {} "0"]
+     [:codigoPorcentaje {} "0"]
+     [:tarifa {} "0"]
+     [:baseImponible {} "0"]
+     [:valor {} "0"]]
+    [:impuesto {}
+     [:codigo {} "0"]
+     [:codigoPorcentaje {} "0"]
+     [:tarifa {} "0"]
+     [:baseImponible {} "0"]
+     [:valor {} "0"]]]]]
+ [:infoAdicional {}
+  [:campoAdicional {:nombre "Info"} "Info"]]]
