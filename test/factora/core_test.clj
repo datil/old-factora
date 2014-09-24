@@ -15,3 +15,10 @@
      (is (= true
             (factura-valida? (factura
                               (read-from-file "resources/factura.edn"))))))))
+
+(deftest retencion-test
+  (testing "Dado un mapa representando una retencion, emite XML conforme al XSD"
+    (let [retencion-valida? (xmlv/create-validation-fn "resources/comprobanteRentencion_v1.0.0.xsd")]
+     (is (= true
+            (retencion-valida? (retencion
+                                (read-from-file "resources/retencion.edn"))))))))

@@ -14,6 +14,13 @@
 (defn factura
   "Dada una factura en formato EDN produce un XML
    de acuerdo al XSD de SRI"
-  [fact]
-  (let [tags (xml/sexp-as-element fact)]
+  [factura]
+  (let [tags (xml/sexp-as-element factura)]
+    (xml/emit-str tags)))
+
+(defn retencion
+  "Dada una retencion en formato EDN produce un XML
+   de acuerdo al XSD de SRI"
+  [retencion]
+  (let [tags (xml/sexp-as-element retencion)]
     (xml/emit-str tags)))

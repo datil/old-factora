@@ -1,0 +1,38 @@
+[:comprobanteRetencion {:xmlns:ds "http://www.w3.org/2000/09/xmldsig#"
+           :xmlns:xsi "http://www.w3.org/2001/XMLSchema-instance"
+           :xsi:noNamespaceSchemaLocation "/home/Users/eraad/Projects/comprobantes/resources/factura_v1.0.0.xsd"
+           :id "comprobante"
+           :version "NMTOKEN"}
+ [:infoTributaria {}
+  [:ambiente {} "1"]
+  [:tipoEmision {} "1"]
+  [:razonSocial {} "Datilmedia S.A."]
+  [:nombreComercial {} "Datil"]
+  [:ruc {} "0914617584001"]
+  [:claveAcceso {} "0000000000000000000000000000000000000000000000000"]
+  [:codDoc {} "00"]
+  [:estab {} "000"]
+  [:ptoEmi {} "000"]
+  [:secuencial "000000000"]
+  [:dirMatriz {} "V.E. Estrada 112"]]
+ [:infoCompRetencion {}
+  [:fechaEmision {} "01/01/2014"]
+  [:dirEstablecimiento {} "V.E. Estrada 112"]
+  [:contribuyenteEspecial {} "123"]
+  [:obligadoContabilidad {} "SI"]
+  [:tipoIdentificacionSujetoRetenido {} "04"]
+  [:razonSocialSujetoRetenido {} "Eduardo Raad"]
+  [:identificacionSujetoRetenido {} "0914617584"]
+  [:periodoFiscal {} "01/1000"]]
+ [:impuestos {}
+  [:impuesto {}
+   [:codigo {} "0"]
+   [:codigoRetencion {} "Ax"]
+   [:baseImponible {} "0"]
+   [:porcentajeRetener {} "0"]
+   [:valorRetenido {} "0"]
+   [:codDocSustento {} "00"]
+   [:numDocSustento {} "000000000000000"]
+   [:fechaEmisionDocSustento {} "01/01/1000"]]]
+ [:infoAdicional {}
+  [:campoAdicional {:nombre "Info"} "Info"]]]
