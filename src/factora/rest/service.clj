@@ -1,25 +1,33 @@
-(ns factora.http.service
+(ns factora.rest.service
     (:require [io.pedestal.http :as bootstrap]
               [io.pedestal.http.route :as route]
               [io.pedestal.http.body-params :as body-params]
               [io.pedestal.http.route.definition :refer [defroutes]]
-              [ring.util.response :as ring-resp]))
+              [ring.util.response :as ring-resp]
+              [factora.invoice :as invoice])
+    (:import [clojure.lang ExceptionInfo]))
 
-(defn about-page
-  [request]
-  (ring-resp/response (format "Clojure %s - served from %s"
-                              (clojure-version)
-                              (route/url-for ::about-page))))
 
 (defn home-page
   [request]
-  (ring-resp/response "Hello World!"))
+  (ring-resp/response "Home"))
+
+(defn create-invoice
+  [request]
+  (let [invoice (:json-params request)]
+    (try 
+      (ring-resp/response (invoice/build-invoice invoice))
+      (catch ExceptionInfo e
+        (-> (ring-resp/response {:errores (:errors (ex-data e))})
+            (ring-resp/status 400))))))
 
 (defroutes routes
   [[["/" {:get home-page}
      ;; Set default interceptors for /about and any other paths under /
-     ^:interceptors [(body-params/body-params) bootstrap/html-body]
-     ["/about" {:get about-page}]]]])
+     ^:interceptors [(body-params/body-params) bootstrap/html-body]]
+    ["/api"
+     ^:interceptors [(body-params/body-params) bootstrap/json-body]
+     ["/invoices" {:post [:post-invoice create-invoice]}]]]])
 
 ;; Consumed by factora.http.server/create-server
 ;; See bootstrap/default-interceptors for additional options you can configure

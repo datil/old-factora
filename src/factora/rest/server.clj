@@ -1,7 +1,7 @@
-(ns factora.http.server
+(ns factora.rest.server
   (:gen-class) ; for -main method in uberjar
   (:require [io.pedestal.http :as server]
-            [pedestal-test.service :as service]))
+            [factora.rest.service :as service]))
 
 ;; This is an adapted service map, that can be started and stopped
 ;; From the REPL you can call server/start and server/stop on this service
@@ -11,7 +11,7 @@
   "The entry-point for 'lein run-dev'"
   [& args]
   (println "\nCreating your [DEV] server...")
-  (-> runnable-service ;; start with production configuration
+  (-> service/service ;; start with production configuration
       (merge {:env :dev
               ;; do not block thread that starts web server
               ::server/join? false
@@ -23,8 +23,8 @@
       ;; Wire up interceptor chains
       (server/default-interceptors)
       (server/dev-interceptors)
+      (server/create-server)
       (server/start)))
-  ; (server/start runnable-service))
 
 (defn -main
   "The entry-point for 'lein run'"

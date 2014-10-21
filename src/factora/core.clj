@@ -12,8 +12,7 @@
                               (first %1)))))
 
 (defn factura
-  "Dada una factura en formato EDN produce un XML
-   de acuerdo al XSD de SRI"
+  "Dada una factura en formato EDN produce un XML de acuerdo al XSD de SRI"
   [fact]
   (let [tags (xml/sexp-as-element fact)]
     (xml/emit-str tags)))

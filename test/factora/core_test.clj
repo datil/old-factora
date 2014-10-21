@@ -9,7 +9,7 @@
     (binding [*read-eval* false]
       (read r))))
 
-(deftest factura-test
+(deftest prueba-factura
   (testing "Dado un mapa representando una factura, emite XML conforme al XSD"
     (let [factura-valida? (xmlv/create-validation-fn "resources/factura_v1.0.0.xsd")]
      (is (= true
