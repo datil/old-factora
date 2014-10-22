@@ -83,38 +83,11 @@
                               :punto_emisor (s/both s/Str
                                                     (s/pred (utils/length = 3) 'of-length-3))}}})
 
-(def validator
-  (compose-sets
-    (validation-set
-      (presence-of [:ambiente :tipo_emision :fecha_emision :emisor]
-                   :message "es requerido"))
-    (nested :emisor 
-            (validation-set
-              (presence-of [:ruc
-                            :razon_social
-                            :direccion
-                            :obligado_contabilidad
-                            :establecimiento])))))
-
-(defn build-error-msg [field error]
-  (str (name field) " " error))
-
-(defn error-msgs-partial [field errors]
-  (map (partial build-error-msg field) errors))
-
-(defn grouped-messages [fields errors]
-  (map #(error-msgs-partial % errors) fields))
-
-(defn error-map [errors]
-  (map #(if (keyword? (key %))
-          (error-msgs-partial (key %) (val %))
-          (grouped-messages (key %) (val %)))
-       errors))
-
-(defn build-invoice [invoice]
+(defn save-invoice [invoice]
   (try
     (s/validate Invoice invoice)
-    (assoc invoice :clave_acceso (utils/gen-access-key invoice "01" 1))
+    (-> (assoc invoice :clave_acceso (utils/gen-access-key invoice "01" 1))
+        identity)
     (catch RuntimeException e
       (throw (ex-info "Invoice does not match the schema"
                       {:system_errors (s/check Invoice invoice)

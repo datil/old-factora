@@ -56,7 +56,7 @@
 ;; Tests
 
 (deftest when-invoice-map-is-valid
-  (let [new-invoice (inv/build-invoice invoice)]
+  (let [new-invoice (inv/create-invoice invoice)]
     (testing "the resulting map should contain the key :clave_acceso"
       (is (contains? new-invoice :clave_acceso)))
     
@@ -66,20 +66,20 @@
 (deftest when-invoice-map-is-missing-required-keys
   (testing "it should return an Exception"
     (are [ex new-invoice] (thrown? ex new-invoice)
-         ExceptionInfo (inv/build-invoice (dissoc invoice :emisor))
-         ExceptionInfo (inv/build-invoice (dissoc invoice :items))
-         ExceptionInfo (inv/build-invoice (dissoc invoice :totales))
-         ExceptionInfo (inv/build-invoice (dissoc invoice :emisor))
-         ExceptionInfo (inv/build-invoice (dissoc invoice :comprador))
-         ExceptionInfo (inv/build-invoice (dissoc invoice :secuencial))
-         ExceptionInfo (inv/build-invoice (dissoc invoice :ambiente))
-         ExceptionInfo (inv/build-invoice (dissoc invoice :fecha_emision))
-         ExceptionInfo (inv/build-invoice (dissoc invoice :moneda)))))
+         ExceptionInfo (inv/save-invoice (dissoc invoice :emisor))
+         ExceptionInfo (inv/save-invoice (dissoc invoice :items))
+         ExceptionInfo (inv/save-invoice (dissoc invoice :totales))
+         ExceptionInfo (inv/save-invoice (dissoc invoice :emisor))
+         ExceptionInfo (inv/save-invoice (dissoc invoice :comprador))
+         ExceptionInfo (inv/save-invoice (dissoc invoice :secuencial))
+         ExceptionInfo (inv/save-invoice (dissoc invoice :ambiente))
+         ExceptionInfo (inv/save-invoice (dissoc invoice :fecha_emision))
+         ExceptionInfo (inv/save-invoice (dissoc invoice :moneda)))))
 
 (defn new-invoice-ex-data
   [invoice]
   (try
-    (inv/build-invoice invoice)
+    (inv/save-invoice invoice)
     (catch ExceptionInfo ei
       (ex-data ei))))
 

@@ -11,9 +11,8 @@
                  [cheshire "5.3.1"]
                  [com.novemberain/validateur "2.3.1"]
                  [prismatic/schema "0.3.0"]
-                 ; [com.taoensso/tower "3.0.2"]
                  [datil/schema-rosetta "0.1.0-SNAPSHOT"]
-                 ; [cddr/integrity "0.3.1-SNAPSHOT"]
+                 [clj-http "1.0.0"]
                  
                  [io.pedestal/pedestal.service "0.3.0"]
 
